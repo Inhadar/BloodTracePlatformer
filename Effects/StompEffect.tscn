@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Effects/StompEffect.gd" type="Script" id=1]
+[ext_resource path="res://Assets/stomp_impact_effect.png" type="Texture" id=2]
+
+[node name="StompEffect" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="HitArea" type="Area2D" parent="Sprite"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/HitArea"]
+position = Vector2( 24, -24 )
+rotation = 0.785397
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

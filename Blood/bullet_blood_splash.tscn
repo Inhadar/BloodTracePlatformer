@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/bloodsplash.png" type="Texture" id=1]
+
+[node name="bullet_blood_splash" type="Node2D" groups=["mini_blood"]]
+
+[node name="Bloodsplash" type="Sprite" parent="."]
+position = Vector2( 4, 1 )
+texture = ExtResource( 1 )
+centered = false
+hframes = 2

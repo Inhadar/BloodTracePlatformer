@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Effects/Trail.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Blood/BloodParticle2.gd" type="Script" id=2]
+[ext_resource path="res://Assets/bloodsplash.png" type="Texture" id=3]
+
+[sub_resource type="SphereMesh" id=1]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 4.0
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[node name="Blood" type="RigidBody2D" groups=["blood"]]
+collision_layer = 4
+collision_mask = 10
+gravity_scale = 10.0
+continuous_cd = 1
+contacts_reported = 1
+contact_monitor = true
+script = ExtResource( 2 )
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+modulate = Color( 0, 1, 0, 1 )
+position = Vector2( 0, 3.3997e-06 )
+scale = Vector2( 4.00454, 4.00454 )
+mesh = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="Trail" parent="." instance=ExtResource( 1 )]
+show_behind_parent = true
+width = 8.0
+width_curve = SubResource( 4 )
+default_color = Color( 0, 1, 0, 1 )
+lenght = 15
+
+[node name="Bloodsplash" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 3 )
+centered = false
+hframes = 2
+
+[connection signal="body_entered" from="." to="." method="_on_Blood_body_entered"]

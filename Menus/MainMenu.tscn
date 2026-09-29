@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Button/PNG/blue_button00.png" type="Texture" id=2]
+[ext_resource path="res://Button/PNG/blue_button01.png" type="Texture" id=3]
+[ext_resource path="res://fonts/Lato-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Menus/MainMenu.gd" type="Script" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 156
+font_data = ExtResource( 4 )
+
+[node name="MainMenu" type="Node"]
+script = ExtResource( 5 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.854902, 0.8, 0, 1 )
+
+[node name="Start" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -271.0
+margin_top = -119.0
+margin_right = -81.0
+margin_bottom = -70.0
+rect_scale = Vector2( 3, 3 )
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="Start"]
+margin_top = 1.0
+margin_right = 935.0
+margin_bottom = 246.0
+rect_scale = Vector2( 0.2, 0.2 )
+custom_fonts/font = SubResource( 1 )
+text = "Start"
+align = 1
+valign = 1
+
+[node name="Quit" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -184.0
+margin_top = 89.0
+margin_right = 6.0
+margin_bottom = 138.0
+rect_scale = Vector2( 2, 2 )
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="Quit"]
+margin_top = 1.0
+margin_right = 935.0
+margin_bottom = 246.0
+rect_scale = Vector2( 0.2, 0.2 )
+custom_fonts/font = SubResource( 1 )
+text = "Quit"
+align = 1
+valign = 1
+
+[connection signal="pressed" from="Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]

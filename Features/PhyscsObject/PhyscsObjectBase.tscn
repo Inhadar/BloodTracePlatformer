@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Features/PhyscsObject/PhyscsObjectBase.gd" type="Script" id=1]
+
+[sub_resource type="QuadMesh" id=2]
+size = Vector2( 100, 100 )
+
+[node name="PhyscsObjectBase" type="RigidBody2D" groups=["bodies"]]
+position = Vector2( 446, 191 )
+z_index = 126
+collision_layer = 32770
+collision_mask = 32771
+input_pickable = true
+gravity_scale = 10.0
+continuous_cd = 2
+contacts_reported = 1
+contact_monitor = true
+script = ExtResource( 1 )
+object_type = "sphere"
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+mesh = SubResource( 2 )
+
+[connection signal="body_entered" from="." to="." method="_on_PhyscsObjectBase_body_entered"]
+[connection signal="input_event" from="." to="." method="_on_PhyscsObjectBase_input_event"]

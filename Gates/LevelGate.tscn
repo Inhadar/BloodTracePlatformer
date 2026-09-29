@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/LevelGate-Sheet.png" type="Texture" id=1]
+[ext_resource path="res://fonts/Lato-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://Gates/LevelGate.gd" type="Script" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 49, 95.5 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 64
+font_data = ExtResource( 2 )
+
+[node name="LevelGate" type="Area2D"]
+script = ExtResource( 4 )
+gate_type = "room"
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 1 )
+centered = false
+hframes = 4
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2( 48, 96.5 )
+shape = SubResource( 1 )
+disabled = true
+
+[node name="Label" type="Label" parent="."]
+margin_top = -29.0
+margin_right = 380.0
+margin_bottom = 49.0
+rect_scale = Vector2( 0.25, 0.25 )
+custom_fonts/font = SubResource( 2 )
+text = "Lv"
+align = 1
+valign = 1
+
+[node name="Stars" type="Node2D" parent="."]
+position = Vector2( 10, -49 )
+
+[node name="1" type="Sprite" parent="Stars"]
+rotation = 0.00704314
+scale = Vector2( 0.35, 0.35 )
+texture = ExtResource( 3 )
+
+[node name="2" type="Sprite" parent="Stars"]
+position = Vector2( 40, 0 )
+rotation = 0.00704314
+scale = Vector2( 0.35, 0.35 )
+texture = ExtResource( 3 )
+
+[node name="3" type="Sprite" parent="Stars"]
+position = Vector2( 80, 0 )
+rotation = 0.00704314
+scale = Vector2( 0.35, 0.35 )
+texture = ExtResource( 3 )

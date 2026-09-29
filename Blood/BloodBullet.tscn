@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Effects/Trail.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Blood/BloodBullet.gd" type="Script" id=2]
+
+[sub_resource type="SphereMesh" id=1]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 13.0
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[node name="Blood" type="RigidBody2D" groups=["blood", "bullet"]]
+collision_layer = 4
+collision_mask = 10
+gravity_scale = 10.0
+continuous_cd = 1
+contacts_reported = 1
+contact_monitor = true
+script = ExtResource( 2 )
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+modulate = Color( 0.941176, 0.309804, 0.470588, 1 )
+position = Vector2( 0, 5.90593e-06 )
+scale = Vector2( 13, 13 )
+mesh = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="Trail" parent="." instance=ExtResource( 1 )]
+show_behind_parent = true
+width = 15.0
+width_curve = SubResource( 4 )
+default_color = Color( 0.941176, 0.309804, 0.470588, 1 )
+lenght = 15
+
+[connection signal="body_entered" from="." to="." method="_on_Blood_body_entered"]
